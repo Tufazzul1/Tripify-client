@@ -8,6 +8,9 @@ import {
 import Login from './components/Login/Login.jsx';
 import Home from './components/Home/Home.jsx';
 import Root from './Root/Root.jsx';
+import AllSpot from './Pages/AllSpot.jsx';
+import AddSpot from './Pages/AddSpot.jsx';
+import MyList from './Pages/MyList.jsx';
 
 
 const router = createBrowserRouter([
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element:<Home></Home>
+      },
+      {
+        path: "/allSpot",
+        element:<AllSpot></AllSpot>
+      },
+      {
+        path: "/addSpot",
+        element:<AddSpot></AddSpot>
+      },
+      {
+        path: "/myList",
+        element:<MyList></MyList>
       },
       {
         path: "login",
