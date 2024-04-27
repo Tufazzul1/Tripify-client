@@ -14,12 +14,14 @@ import MyList from './Pages/MyList.jsx';
 import Register from './components/Register/Register.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import PrivateRoutes from './Routes/PrivateRoutes.jsx';
+import ErrorPage from './Pages/ErrorPage.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
