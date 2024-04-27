@@ -13,6 +13,7 @@ import AddSpot from './Pages/AddSpot.jsx';
 import MyList from './Pages/MyList.jsx';
 import Register from './components/Register/Register.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
+import PrivateRoutes from './Routes/PrivateRoutes.jsx';
 
 
 const router = createBrowserRouter([
@@ -26,15 +27,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/allSpot",
-        element: <AllSpot></AllSpot>
+        element: <PrivateRoutes><AllSpot></AllSpot></PrivateRoutes>
       },
       {
         path: "/addSpot",
-        element: <AddSpot></AddSpot>
+        element: <PrivateRoutes><AddSpot></AddSpot></PrivateRoutes>
       },
       {
         path: "/myList",
-        element: <MyList></MyList>
+        element: <PrivateRoutes><MyList></MyList></PrivateRoutes>
       },
       {
         path: "/login",

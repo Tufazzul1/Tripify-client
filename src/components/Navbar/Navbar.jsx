@@ -1,12 +1,27 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 
 
 const Navbar = () => {
 
-    const [theme, setTheme] = useState('light');
+    const { user , logOut} = useAuth()
+    console.log(user)
 
+    const handleSignOut = () =>{
+        logOut()
+        .then(result =>{
+            console.log(result)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    }
+
+
+
+    const [theme, setTheme] = useState('light');
     useEffect(() => {
         localStorage.setItem('theme', theme)
         const localTheme = localStorage.getItem('theme')
@@ -105,12 +120,19 @@ const Navbar = () => {
 
                 </div>
                 <div className="navbar-end space-x-2">
-                    <NavLink to='/login'>
-                        <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Login</button>
-                    </NavLink>
+
+                    {
+                        user ?
+                            <button onClick={handleSignOut} className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'>Log Out</button>
+                            : <NavLink to='/login'>
+                                <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Login</button>
+                            </NavLink> 
+                                
+                    }
                     <NavLink to='/register'>
                         <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Reister</button>
                     </NavLink>
+
                     <label className="swap swap-rotate">
 
                         {/* this hidden checkbox controls the state */}
@@ -125,7 +147,7 @@ const Navbar = () => {
                     </label>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

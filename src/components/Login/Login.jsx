@@ -3,10 +3,16 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
+
+    const { signIn } = useAuth()
     const [showPassword, setShowPassword] = useState(false);
+    const location = useLocation();
+    // console.log( "location from login",location)
+    const navigate = useNavigate()
 
 
     const handleLogin = e => {
@@ -15,23 +21,20 @@ const Login = () => {
 
         const email = form.get('email');
         const password = form.get('password');
-        console.log(email, password)
 
 
-        // signIn(email, password)
-        //     .then(result => {
-        //         console.log(result.user);
-        //         toast.success("Login successfully")
-        //         setTimeout(() => {
-        //             // navigate 
-        //             navigate(location?.state ? location.state : '/');
-        //         }, 2000);
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user);
 
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //         toast.error("Invalid Email or Password");
-        //     })
+                // navigate the user 
+                navigate(location?.state ?  location.state : '/');
+
+            })
+            .catch(error => {
+                console.log(error)
+
+            })
     }
     return (
         <div style={{ backgroundImage: 'url(https://i.ibb.co/drq269w/mosharraf-hossain-VFn-Dry6c1-0-unsplash.jpg)' }} className='mt-5
