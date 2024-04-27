@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css';
-import { NavLink } from 'react-router-dom';
 import { Autoplay } from 'swiper/modules';
 
 

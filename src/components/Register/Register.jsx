@@ -1,37 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa6";
-import { FaGoogle } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { FaEyeSlash } from "react-icons/fa6";
+import useAuth from '../../hooks/useAuth';
 
-const Login = () => {
+
+const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
 
+    const {createUser} = useAuth()
 
-    const handleLogin = e => {
+    const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
-
+        const name = form.get('name');
         const email = form.get('email');
+        const photo = form.get('photo');
         const password = form.get('password');
-        console.log(email, password)
+        // console.log(name, email, photo, password)
 
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error =>{
+            console.log(error.message)
+        })
 
-        // signIn(email, password)
-        //     .then(result => {
-        //         console.log(result.user);
-        //         toast.success("Login successfully")
-        //         setTimeout(() => {
-        //             // navigate 
-        //             navigate(location?.state ? location.state : '/');
-        //         }, 2000);
-
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //         toast.error("Invalid Email or Password");
-        //     })
     }
     return (
         <div style={{ backgroundImage: 'url(https://i.ibb.co/drq269w/mosharraf-hossain-VFn-Dry6c1-0-unsplash.jpg)' }} className='mt-5
@@ -39,13 +34,24 @@ const Login = () => {
             <div className="hero min-h-[550px] flex flex-col lg:flex-row w-full bg-opacity-10" >
 
                 <div className="lg:w-1/2  p-4 lg:p-8 text-white">
-                    <h2 className="md:text-5xl text-2xl font-bold mt-4 text-[#0000ff]">Please Login</h2>
-                    <p className="mt-3">Sign in to access your personalized travel dashboard. Manage your bookings, explore new destinations, and get exclusive travel tips to make your next journey unforgettable.</p>
+                    <h2 className="md:text-5xl text-2xl font-bold mt-4 text-[#0000ff]">Please Register</h2>
+                    <p className="mt-3">Create an account to start your travel journey. Unlock special offers, build custom itineraries, and enjoy a seamless booking experience for your next adventure.</p>
                 </div>
 
                 <div className="card shrink-0  max-w-lg shadow-2xl bg-base-100 bg-opacity-25 lg:w-1/2">
 
-                    <form onSubmit={handleLogin} className="card-body">
+                    <form onSubmit={handleRegister} className="card-body">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Your Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Your Name"
+                                className="input input-bordered"
+                                required />
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -54,6 +60,17 @@ const Login = () => {
                                 type="email"
                                 name="email"
                                 placeholder="Email"
+                                className="input input-bordered"
+                                required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">PhotoURL</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="photo"
+                                placeholder="Photo URL"
                                 className="input input-bordered"
                                 required />
                         </div>
@@ -77,20 +94,16 @@ const Login = () => {
 
 
                         <div className="form-control mt-6">
-                            <button className="btn border hover:text-[#0000ff] border-[#0000ff] bg-[#0000ff] text-white hover:border-[#0000ff]">Login</button>
+                            <button className="btn border hover:text-[#0000ff] border-[#0000ff] bg-[#0000ff] text-white hover:border-[#0000ff]">Register</button>
                         </div>
                     </form>
 
-                    <div className="text-center font-bold space-y-3">
-                        <h3>Login with </h3>
-                        <button onClick={() => handleSocialLogin(googleLogin)} className="btn  border text-[#0000ff] border-[#0000ff] hover:bg-[#0000ff] hover:text-white mr-2"> <FaGoogle />Google</button>
-                        <button onClick={() => handleSocialLogin(githubLogin)} className="btn  border text-[#0000ff] border-[#0000ff] hover:bg-[#0000ff] hover:text-white">Github <FaGithub /></button>
-                    </div>
-                    <p className="text-center mb-4 mt-4">New in here ? Please <Link to={'/register'} className="text-blue-700 font-bold">Register</Link></p>
+                 
+                    <p className="text-center mb-4 mt-4">Already have an account ? Please <Link to={'/login'} className="text-blue-700 font-bold">Login</Link></p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Register;

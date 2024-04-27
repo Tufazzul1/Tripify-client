@@ -63,7 +63,7 @@ const Navbar = () => {
                             </NavLink>
                         </ul>
                     </div>
-                    <Link to={'/'}><button className="btn btn-ghost text-primary text-3xl font-bold">Tripify</button></Link>
+                    <Link to={'/'}><button className="btn btn-ghost text-primary text-xl md:text-3xl font-bold">Tripify</button></Link>
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
@@ -104,14 +104,12 @@ const Navbar = () => {
                     </ul>
 
                 </div>
-                <div className="navbar-end">
-                    <NavLink
-                        className={({ isActive }) =>
-                            isActive ? 'text-primary font-bold underline underline-offset-4' : 'font-bold'
-                        }
-                        to='/login'
-                    >
-                        Login
+                <div className="navbar-end space-x-2">
+                    <NavLink to='/login'>
+                        <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Login</button>
+                    </NavLink>
+                    <NavLink to='/register'>
+                        <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Reister</button>
                     </NavLink>
                     <label className="swap swap-rotate">
 
