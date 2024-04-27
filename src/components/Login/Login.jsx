@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
-    const { signIn } = useAuth()
+    const { signIn, signInWithGoogle, signInWithGithub } = useAuth()
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     // console.log( "location from login",location)
@@ -29,7 +29,7 @@ const Login = () => {
                 console.log(result.user);
                 toast.success("Logged in successfully!");
                 // navigate the user 
-               
+
                 setTimeout(() => {
                     // navigate 
                     navigate(location?.state ? location.state : '/');
@@ -40,6 +40,25 @@ const Login = () => {
                 console.log(error)
                 toast.error("Invalid email or password")
             })
+    }
+
+    const handleSocialLogin = socialProvider => {
+
+        socialProvider()
+            .then(result => {
+                console.log(result.user);
+                toast.success("Login successfully")
+
+                setTimeout(() => {
+                    // navigate 
+                    navigate(location?.state ? location.state : '/');
+                }, 2000);
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error("Invalid Email or Password");
+            }
+            )
     }
     return (
         <div>
@@ -92,8 +111,8 @@ const Login = () => {
 
                         <div className="text-center font-bold space-y-3">
                             <h3>Login with </h3>
-                            <button onClick={() => handleSocialLogin(googleLogin)} className="btn  border text-[#0000ff] border-[#0000ff] hover:bg-[#0000ff] hover:text-white mr-2"> <FaGoogle />Google</button>
-                            <button onClick={() => handleSocialLogin(githubLogin)} className="btn  border text-[#0000ff] border-[#0000ff] hover:bg-[#0000ff] hover:text-white">Github <FaGithub /></button>
+                            <button onClick={() => handleSocialLogin(signInWithGoogle)} className="btn  border text-[#0000ff] border-[#0000ff] hover:bg-[#0000ff] hover:text-white mr-2"> <FaGoogle />Google</button>
+                            <button onClick={() => handleSocialLogin(signInWithGithub)} className="btn  border text-[#0000ff] border-[#0000ff] hover:bg-[#0000ff] hover:text-white">Github <FaGithub /></button>
                         </div>
                         <p className="text-center mb-4 mt-4">New in here ? Please <Link to={'/register'} className="text-blue-700 font-bold">Register</Link></p>
                     </div>
