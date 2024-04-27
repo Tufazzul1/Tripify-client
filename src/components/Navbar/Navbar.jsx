@@ -6,17 +6,17 @@ import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
 
-    const { user , logOut} = useAuth()
+    const { user, logOut } = useAuth()
     console.log(user)
 
-    const handleSignOut = () =>{
+    const handleSignOut = () => {
         logOut()
-        .then(result =>{
-            console.log(result)
-        })
-        .catch(error =>{
-            console.log(error)
-        })
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
 
@@ -120,19 +120,6 @@ const Navbar = () => {
 
                 </div>
                 <div className="navbar-end space-x-2">
-
-                    {
-                        user ?
-                            <button onClick={handleSignOut} className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'>Log Out</button>
-                            : <NavLink to='/login'>
-                                <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Login</button>
-                            </NavLink> 
-                                
-                    }
-                    <NavLink to='/register'>
-                        <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Reister</button>
-                    </NavLink>
-
                     <label className="swap swap-rotate">
 
                         {/* this hidden checkbox controls the state */}
@@ -145,6 +132,37 @@ const Navbar = () => {
                         <svg className="swap-on fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>
 
                     </label>
+
+                    {
+                        user ? <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52">
+                                <li>
+                                    <a className="justify-between">
+                                        Profile
+                                        <span className="badge">New</span>
+                                    </a>
+                                </li>
+                                <li><a>Settings</a></li>
+                                <li><a>Logout</a></li>
+                            </ul>
+                        </div> : <NavLink to='/register'>
+                            <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Reister</button>
+                        </NavLink>
+                    }
+
+                    {
+                        user ?
+                            <button onClick={handleSignOut} className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'>Log Out</button>
+                            : <NavLink to='/login'>
+                                <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Login</button>
+                            </NavLink>
+                    }
+
                 </div>
             </div>
         </div >
