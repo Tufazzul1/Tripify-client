@@ -4,10 +4,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddSpot = () => {
-    const {user} = useAuth() || {}
+    const { user } = useAuth() || {}
     // console.log(user)
 
-    const handleAddSpot = e =>{
+    const handleAddSpot = e => {
         e.preventDefault()
 
         const form = e.target;
@@ -22,23 +22,23 @@ const AddSpot = () => {
         const UserName = user.displayName;
         const email = user.email
 
-        const spot =  {name, CName, location, photo, cost, seasonality, visitor, description , email, UserName}
+        const spot = { name, CName, location, photo, cost, seasonality, visitor, description, email, UserName }
         // console.log(spot)
 
 
         // send data to the server
         fetch('http://localhost:5000/spots', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(spot)
         })
-        .then(res=> res.json())
-        .then(data =>{
-            console.log(data);
-            if(data?.insertedId){
-                toast.success("Successfully added spot");
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data?.insertedId) {
+                    toast.success("Successfully added spot");
+                }
+            })
     }
     return (
         <div>
@@ -49,16 +49,24 @@ const AddSpot = () => {
                         <span className="label-text font">Spot name</span>
                         <input type="text" name='name' placeholder="Tourist Spot Name" className="input input-bordered w-full " />
                     </label>
-                    <label className="form-control w-full ">
+                    <label className="form-control w-full">
                         <span className="label-text">Country Name</span>
-                        <input type="text" name='CName' placeholder="Country Name" className="input input-bordered w-full" />
+                        <select className="input h-[40px] input-bordered w-full" name="CName">
+                            <option value="">--Select country--</option> {/* Default option */}
+                            <option value="bangladesh">Bangladesh</option>
+                            <option value="thiland">Thailand</option>
+                            <option value="indonesia">Indonesia</option>
+                            <option value="malaysia">Malaysia</option>
+                            <option value="vietnam">Vietnam</option>
+                            <option value="cambodia">Cambodia</option>
+                        </select>
                     </label>
                 </div>
                 {/* name and photo */}
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
                     <label className="form-control w-full">
                         <span className="label-text font">Location</span>
-                        <input type="text" name='location' placeholder="Location" className="input input-bordered w-full " />
+                        <input type="text" name='location' placeholder="Location" className="input input-bordered w-full" />
                     </label>
                     <label className="form-control w-full ">
                         <span className="label-text">Photo URL</span>
@@ -96,7 +104,7 @@ const AddSpot = () => {
                 </div>
 
                 <div>
-                    <input className='btn w-full' type="submit" value="Add" />
+                    <input className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white w-full ' type="submit" value="Add" />
                 </div>
             </form>
 
