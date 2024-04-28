@@ -1,10 +1,45 @@
 
 
-import React from 'react';
 
-const MyListTable = ({ list }) => {
+import Swal from 'sweetalert2';
+
+const MyListCard = ({ list, setItem }) => {
     // Destructure the data from the list prop
-    const { name, CName, photo, cost, seasonality } = list;
+    const { _id, name, CName, photo, cost, seasonality } = list;
+
+    const handleDelete = _id => {
+        console.log(_id)
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/spots/${_id}`, {
+                    method: 'DELETE',
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Spot has been deleted.",
+                                icon: "success"
+                            });
+                            setItem((prevList) => prevList.filter((item) => item._id !== _id))
+                        }
+                    })
+            }
+        });
+    }
 
     return (
         <div className="overflow-x-auto">
@@ -17,24 +52,24 @@ const MyListTable = ({ list }) => {
                         <th>Country Name</th>
                         <th>Seasonality</th>
                         <th>Cost</th>
-                        <th>Action</th> 
+                        <th>Action</th>
                     </tr>
                 </thead>
                 {/* Table body */}
                 <tbody>
                     <tr>
                         <td>
-                            
+
                             <img src={photo} className="h-[100px] w-[200px]" alt="Spot" />
                         </td>
-                        <td>{name}</td> 
-                        <td>{CName}</td> 
-                        <td>{seasonality}</td> 
-                        <td>{cost}</td> 
+                        <td>{name}</td>
+                        <td>{CName}</td>
+                        <td>{seasonality}</td>
+                        <td>{cost}</td>
                         <td className='space-x-2'>
-                           
+
                             <button className="btn btn-primary">Update</button>
-                            <button className="btn btn-error">Delete</button>
+                            <button onClick={() => handleDelete(_id)} className="btn btn-error">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -43,4 +78,4 @@ const MyListTable = ({ list }) => {
     );
 };
 
-export default MyListTable;
+export default MyListCard;

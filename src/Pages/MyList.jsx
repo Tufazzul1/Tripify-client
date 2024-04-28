@@ -24,6 +24,7 @@ const MyList = () => {
                     item?.map(list => <MyListCard
                         key={list._id}
                         list={list}
+                        setItem={setItem}
                     ></MyListCard>)
                 }
             </div>
