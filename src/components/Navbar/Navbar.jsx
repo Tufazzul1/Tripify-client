@@ -7,12 +7,12 @@ import useAuth from '../../hooks/useAuth';
 const Navbar = () => {
 
     const { user, logOut } = useAuth()
-    console.log(user)
+    // console.log(user)
 
     const handleSignOut = () => {
         logOut()
             .then(result => {
-                console.log(result)
+                // console.log(result)
             })
             .catch(error => {
                 console.log(error)
@@ -20,7 +20,7 @@ const Navbar = () => {
     }
 
 
-
+    // theme
     const [theme, setTheme] = useState('light');
     useEffect(() => {
         localStorage.setItem('theme', theme)

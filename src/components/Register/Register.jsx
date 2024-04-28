@@ -37,7 +37,7 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 toast.success("User created succefully");
                 setTimeout(() => {
                     navigate('/');

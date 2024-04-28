@@ -26,7 +26,7 @@ const Login = () => {
 
         signIn(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 toast.success("Logged in successfully!");
                 // navigate the user 
 
@@ -46,7 +46,7 @@ const Login = () => {
 
         socialProvider()
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 toast.success("Login successfully")
 
                 setTimeout(() => {
