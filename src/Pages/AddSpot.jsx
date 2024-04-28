@@ -1,7 +1,6 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'
 
 const AddSpot = () => {
     const { user } = useAuth() || {}
@@ -36,7 +35,13 @@ const AddSpot = () => {
             .then(data => {
                 console.log(data);
                 if (data?.insertedId) {
-                    toast.success("Successfully added spot");
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'User added successfuly',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                      })
+                      form.reset()
                 }
             })
     }
@@ -108,7 +113,6 @@ const AddSpot = () => {
                 </div>
             </form>
 
-            <ToastContainer />
         </div>
     );
 };

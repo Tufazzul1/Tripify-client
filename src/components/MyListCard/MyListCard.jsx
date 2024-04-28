@@ -1,22 +1,46 @@
+
+
 import React from 'react';
 
-const MyListCard = ({ list }) => {
-    const { name, CName, photo } = list;
+const MyListTable = ({ list }) => {
+    // Destructure the data from the list prop
+    const { name, CName, photo, cost, seasonality } = list;
 
     return (
-        <div>
-            <div className="card card-side bg-base-100 shadow-xl">
-                <figure><img src={photo} className='h-[250px] w-[500px] p-4' alt="Movie" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">New movie is released!</h2>
-                    <p>Click the button to watch on Jetflix app.</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Watch</button>
-                    </div>
-                </div>
-            </div>
+        <div className="overflow-x-auto">
+            <table className="table w-full">
+                {/* Table header */}
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Country Name</th>
+                        <th>Seasonality</th>
+                        <th>Cost</th>
+                        <th>Action</th> 
+                    </tr>
+                </thead>
+                {/* Table body */}
+                <tbody>
+                    <tr>
+                        <td>
+                            
+                            <img src={photo} className="h-[100px] w-[200px]" alt="Spot" />
+                        </td>
+                        <td>{name}</td> 
+                        <td>{CName}</td> 
+                        <td>{seasonality}</td> 
+                        <td>{cost}</td> 
+                        <td className='space-x-2'>
+                           
+                            <button className="btn btn-primary">Update</button>
+                            <button className="btn btn-error">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 };
 
-export default MyListCard;
+export default MyListTable;

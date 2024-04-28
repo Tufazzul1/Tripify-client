@@ -18,12 +18,13 @@ const MyList = () => {
     return (
         <div>
             <h2 className="text-3xl mt-6 font-bold text-center mb-4">My added tourist spot list</h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+           
+            <div className='gap-5'>
                 {
-                    item?.map(list => (<MyListCard
+                    item?.map(list => <MyListCard
                         key={list._id}
                         list={list}
-                    ></MyListCard>))
+                    ></MyListCard>)
                 }
             </div>
         </div>
