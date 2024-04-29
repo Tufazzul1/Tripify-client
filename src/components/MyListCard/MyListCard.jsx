@@ -1,6 +1,7 @@
 
 
 
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyListCard = ({ list, setItem }) => {
@@ -42,7 +43,7 @@ const MyListCard = ({ list, setItem }) => {
     }
 
     return (
-        <div className="overflow-x-auto">
+        <div className="">
             <table className="table w-full">
                 {/* Table header */}
                 <thead>
@@ -68,8 +69,8 @@ const MyListCard = ({ list, setItem }) => {
                         <td>{cost}</td>
                         <td className='space-x-2'>
 
-                            <button className="btn btn-primary">Update</button>
-                            <button onClick={() => handleDelete(_id)} className="btn btn-error">Delete</button>
+                            <Link className="btn btn-primary" to={`/update/${_id}`}>Update</Link>
+                            <button onClick={() => handleDelete(_id)} className="btn btn-error" >Delete</button>
                         </td>
                     </tr>
                 </tbody>

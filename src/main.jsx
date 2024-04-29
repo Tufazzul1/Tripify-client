@@ -15,6 +15,8 @@ import Register from './components/Register/Register.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import PrivateRoutes from './Routes/PrivateRoutes.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
+import Update from './Pages/Update.jsx';
+import SpotDetails from './Pages/SpotDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -39,6 +41,15 @@ const router = createBrowserRouter([
       {
         path: "/myList",
         element: <PrivateRoutes><MyList></MyList></PrivateRoutes>
+      },
+      {
+        path: "/spotDetails/:id",
+        element: <PrivateRoutes><SpotDetails></SpotDetails></PrivateRoutes>
+      },
+      { 
+        path: "/update/:id",
+        element: <PrivateRoutes><Update></Update></PrivateRoutes>,
+        // loader: ({params}) => fetch(`http://localhost:5000/spots/${params.id}`)
       },
       {
         path: "/login",

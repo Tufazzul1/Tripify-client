@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AllSpotCard = ({ spot }) => {
-    const { name, CName, location, photo, cost, seasonality, visitor, description } = spot;
+    const { _id, name, CName, location, photo, cost, seasonality, visitor, description } = spot;
+    // console.log(spot)
 
     return (
         <div>
@@ -14,7 +16,7 @@ const AllSpotCard = ({ spot }) => {
                     <p>{description}</p>
                     <p>{cost}</p>
                     <div className="card-actions">
-                        <button className="btn btn-primary w-full">View Details</button>
+                        <Link className='btn btn-primary' to={`/spotDetails/${spot._id}`}>View Spot Details</Link>
                     </div>
                 </div>
             </div>

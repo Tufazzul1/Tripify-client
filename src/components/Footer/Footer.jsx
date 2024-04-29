@@ -11,7 +11,7 @@ const Footer = () => {
                 <p className='text-white'>
                     Explore new destinations and experience unforgettable adventures with our curated travel packages
                 </p>
-                <p className='text-white'>Copyright © 2024 - All right reserved <span className='text-pink-500 font-bold'>Tripify</span></p>
+                <p className='text-white'>Copyright © 2024 - All right reserved by<span className='text-pink-500 font-bold'>Tripify</span></p>
             </aside>
             <nav>
                 <div className="grid grid-flow-col gap-4 text-white">

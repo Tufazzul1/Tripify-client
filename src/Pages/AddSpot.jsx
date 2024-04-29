@@ -12,16 +12,17 @@ const AddSpot = () => {
         const form = e.target;
         const name = form.name.value;
         const CName = form.CName.value;
-        const location = form.name.value;
+        const location = form.location.value;
         const photo = form.photo.value;
         const cost = form.cost.value;
         const seasonality = form.seasonality.value;
         const visitor = form.visitor.value;
+        const time = form.time.value;
         const description = form.description.value;
         const UserName = user.displayName;
         const email = user.email
 
-        const spot = { name, CName, location, photo, cost, seasonality, visitor, description, email, UserName }
+        const spot = { name, CName, location,time,  photo, cost, seasonality, visitor, description, email, UserName }
         // console.log(spot)
 
 
@@ -37,7 +38,7 @@ const AddSpot = () => {
                 if (data?.insertedId) {
                     Swal.fire({
                         title: 'Success',
-                        text: 'User added successfuly',
+                        text: 'Spot added successfuly',
                         icon: 'success',
                         confirmButtonText: 'Ok'
                       })
@@ -57,7 +58,7 @@ const AddSpot = () => {
                     <label className="form-control w-full">
                         <span className="label-text">Country Name</span>
                         <select className="input h-[40px] input-bordered w-full" name="CName">
-                            <option value="">--Select country--</option> {/* Default option */}
+                            <option value="">--Select country--</option> 
                             <option value="bangladesh">Bangladesh</option>
                             <option value="thiland">Thailand</option>
                             <option value="indonesia">Indonesia</option>

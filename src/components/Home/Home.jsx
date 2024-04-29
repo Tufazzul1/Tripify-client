@@ -7,7 +7,7 @@ import AllSpotCard from '../AllSpotCard/AllSpotCard';
 const Home = () => {
 
     const spots = useLoaderData();
-    console.log(spots)
+    // console.log(spots)
     return (
         <div>
             <Banner></Banner>

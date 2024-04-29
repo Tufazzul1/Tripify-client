@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLoaderData, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 
@@ -7,7 +7,8 @@ import useAuth from '../../hooks/useAuth';
 const Navbar = () => {
 
     const { user, logOut } = useAuth()
-    // console.log(user)
+    console.log(user)
+
 
     const handleSignOut = () => {
         logOut()
@@ -116,6 +117,7 @@ const Navbar = () => {
                         >
                             My List
                         </NavLink>
+                      
                     </ul>
 
                 </div>
@@ -141,14 +143,10 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52">
-                                <li>
-                                    <a className="justify-between">
-                                        Profile
-                                        <span className="badge">New</span>
-                                    </a>
-                                </li>
-                                <li><a>Settings</a></li>
-                                <li><a>Logout</a></li>
+
+                                <li className='mb-3'>Name :{user?.displayName}</li>
+                                <li className='mb-3'>Email :{user?.email}</li>
+                                <button onClick={handleSignOut} className='btn btn-sm border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'>Log Out</button>
                             </ul>
                         </div> : <NavLink to='/register'>
                             <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Reister</button>
@@ -157,7 +155,7 @@ const Navbar = () => {
 
                     {
                         user ?
-                            <button onClick={handleSignOut} className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'>Log Out</button>
+                            ''
                             : <NavLink to='/login'>
                                 <button className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white'> Login</button>
                             </NavLink>
