@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import MyListCard from '../components/MyListCard/MyListCard';
+import Footer from '../components/Footer/Footer';
 
 const MyList = () => {
 
@@ -17,10 +18,13 @@ const MyList = () => {
     }, [user])
     return (
         <div>
-            <h2 className="text-3xl mt-6 font-bold text-center mb-4">My added tourist spot list</h2>
+            <div className='h-[250px] mt-3 flex items-center justify-center bg-[#2d0057CC]'>
+                <h3 className="text-4xl font-bold text-white">My Added Tourist Spots</h3>
+
+            </div>
 
 
-            <div className='gap-5'>
+            <div className='gap-5 mt-5'>
                 {
                     item?.map(list => <MyListCard
                         key={list._id}
@@ -29,6 +33,7 @@ const MyList = () => {
                     ></MyListCard>)
                 }
             </div>
+            <Footer></Footer>
         </div>
     );
 };

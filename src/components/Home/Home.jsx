@@ -23,6 +23,8 @@ const Home = () => {
                             </AllSpotCard>)
                     }
                 </div>
+
+
             </div>
             <Footer></Footer>
         </div>

@@ -32,7 +32,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/allSpot",
-        element: <AllSpot></AllSpot>
+        element: <AllSpot></AllSpot>,
+        loader: () => fetch('https://tripify-server-five.vercel.app/spots')
       },
       {
         path: "/addSpot",
@@ -49,7 +50,6 @@ const router = createBrowserRouter([
       { 
         path: "/update/:id",
         element: <PrivateRoutes><Update></Update></PrivateRoutes>,
-        // loader: ({params}) => fetch(`https://tripify-server-five.vercel.app/spots/${params.id}`)
       },
       {
         path: "/login",

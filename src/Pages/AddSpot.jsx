@@ -1,6 +1,7 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2'
+import Footer from '../components/Footer/Footer';
 
 const AddSpot = () => {
     const { user } = useAuth() || {}
@@ -48,6 +49,10 @@ const AddSpot = () => {
     }
     return (
         <div>
+            <div className='h-[250px] mt-3 flex items-center justify-center bg-[#2d0057CC]'>
+                <h3 className="text-4xl font-bold text-white">Add Tourist Spot</h3>
+
+            </div>
             <form onSubmit={handleAddSpot} className='mt-4 space-y-3 p-4'>
                 {/* name and photo */}
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
@@ -113,7 +118,7 @@ const AddSpot = () => {
                     <input className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white w-full ' type="submit" value="Add" />
                 </div>
             </form>
-
+            <Footer></Footer>
         </div>
     );
 };

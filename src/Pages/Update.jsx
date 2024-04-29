@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import Footer from '../components/Footer/Footer';
 
 const Update = () => {
     const { user } = useAuth()
@@ -58,7 +59,10 @@ const Update = () => {
     }
     return (
         <div>
-            <h1 className='text-4xl font-bold text-center mt-6'>Update Your Spot</h1>
+            <div className='h-[250px] mt-3 flex items-center justify-center bg-[#2d0057CC]'>
+                <h3 className="text-4xl font-bold text-white"> Update Your Spot</h3>
+
+            </div>
             <div>
                 <form onSubmit={handleUpdate} className='mt-4 space-y-3 p-4'>
                     {/* name and photo */}
@@ -127,6 +131,7 @@ const Update = () => {
                 </form>
 
             </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../Footer/Footer';
 
 const AllSpotCard = ({ spot }) => {
     const { _id, name, CName, location, photo, cost, seasonality, visitor, description } = spot;
