@@ -8,7 +8,7 @@ const MyList = () => {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myList/${user.email}`)
+        fetch(`https://tripify-server-five.vercel.app/myList/${user.email}`)
             .then(res => res.json())
             .then((data) => {
                 setItem(data)

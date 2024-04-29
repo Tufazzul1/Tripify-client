@@ -9,7 +9,7 @@ const SpotDetails = () => {
     const [spot, setSpot] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleSpot/${id}`)
+        fetch(`https://tripify-server-five.vercel.app/singleSpot/${id}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
@@ -42,7 +42,5 @@ const SpotDetails = () => {
         </div>
     );
 };
-
-// name, CName, location,time,  photo, cost, seasonality, visitor, description, email, UserName
 
 export default SpotDetails;

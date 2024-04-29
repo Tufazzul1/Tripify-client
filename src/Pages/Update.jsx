@@ -11,7 +11,7 @@ const Update = () => {
     const [spot, setSpot] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleSpot/${id}`)
+        fetch(`https://tripify-server-five.vercel.app/singleSpot/${id}`)
             .then(res => res.json())
             .then(data => {
                 setSpot(data)
@@ -38,7 +38,7 @@ const Update = () => {
         const spot = { name, time, CName, location, photo, cost, seasonality, visitor, description, email, UserName }
         console.log(spot)
 
-        fetch(`http://localhost:5000/update/${id}`, {
+        fetch(`https://tripify-server-five.vercel.app/update/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(spot)

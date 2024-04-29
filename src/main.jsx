@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/spots')
+        loader: () => fetch('https://tripify-server-five.vercel.app/spots')
       },
       {
         path: "/allSpot",
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       { 
         path: "/update/:id",
         element: <PrivateRoutes><Update></Update></PrivateRoutes>,
-        // loader: ({params}) => fetch(`http://localhost:5000/spots/${params.id}`)
+        // loader: ({params}) => fetch(`https://tripify-server-five.vercel.app/spots/${params.id}`)
       },
       {
         path: "/login",

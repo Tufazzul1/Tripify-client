@@ -27,7 +27,7 @@ const AddSpot = () => {
 
 
         // send data to the server
-        fetch('http://localhost:5000/spots', {
+        fetch('https://tripify-server-five.vercel.app/spots', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(spot)
