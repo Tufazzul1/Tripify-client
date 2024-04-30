@@ -1,8 +1,16 @@
-# React + Vite
+# Tripify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* Live site link : https://tripify-auth-536be.web.app/
 
-Currently, two official plugins are available:
+# features 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Destination Information :
+Provide detailed information about travel destinations, including descriptions, images, attractions, activities, local culture, and travel tips. This feature helps users explore and learn about various places.
+* Search and Filtering : 
+Implement a search and filtering system that allows users to search for destinations, flights, hotels, or activities based on specific criteria (e.g., location, date, price, rating). This feature enhances user experience by making it easier to find relevant travel options.
+* Booking and Reservations :
+Allow users to book flights, hotels, tours, or other travel-related services directly through the website. This feature often includes integration with payment gateways and confirmation emails.
+* User Accounts and Profiles :
+Enable users to create accounts, allowing them to save their favorite destinations, manage bookings, and view their travel history. User profiles can also support reviews, recommendations, and personalized content.
+* Travel Itinerary Management : 
+Provide tools for users to create and manage travel itineraries. This feature can include scheduling, reminders, and the ability to share itineraries with others. It adds value by helping users organize their trips.
