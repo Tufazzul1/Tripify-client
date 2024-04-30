@@ -17,6 +17,7 @@ import PrivateRoutes from './Routes/PrivateRoutes.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
 import Update from './Pages/Update.jsx';
 import SpotDetails from './Pages/SpotDetails.jsx';
+import Country from './Pages/Country.jsx';
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/spotDetails/:id",
         element: <PrivateRoutes><SpotDetails></SpotDetails></PrivateRoutes>
+      },
+      {
+        path: "/country/:CName",
+        element: <PrivateRoutes><Country></Country></PrivateRoutes>
       },
       { 
         path: "/update/:id",

@@ -33,7 +33,7 @@ const Home = () => {
             })
     }, []);
     useEffect(() => {
-        fetch('http://localhost:5000/countrys')
+        fetch('https://tripify-server-five.vercel.app/countrys')
             .then(res => res.json())
             .then(data => {
                 setCountrys(data)

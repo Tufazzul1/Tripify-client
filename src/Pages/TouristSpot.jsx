@@ -7,7 +7,7 @@ const TouristSpot = ({ spot }) => {
     return (
         <div>
             <div className="card bg-base-100 shadow-xl border">
-                <figure><img className="h-[250px] w-full p-2" src={photo} alt="Shoes" /></figure>
+                <figure><img className="h-[250px] w-full p-2" src={photo} alt="spot" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
                     <IoLocationOutline /> {name}
