@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLoaderData, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-
-
+import { Tooltip  } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const Navbar = () => {
 
@@ -50,10 +50,10 @@ const Navbar = () => {
                                 }
                                 to='/'
                             >
-                                Home
+                                Home                              
                             </NavLink>
-
-                            <NavLink
+                            
+                            <NavLink id='spot'
                                 className={({ isActive }) =>
                                     isActive ? 'text-primary font-bold underline underline-offset-4' : 'font-bold'
                                 }

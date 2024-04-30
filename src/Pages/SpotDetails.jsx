@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
+import { IoLocationOutline } from 'react-icons/io5';
 
 const SpotDetails = () => {
     const { id } = useParams();
@@ -25,10 +26,10 @@ const SpotDetails = () => {
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4'>
                 <div>
-                    <img src={spot.photo} alt="" />
+                    <img className='lg:h-[420px] p-2' src={spot.photo} alt="" />
                 </div>
                 <div className='boder shadow-lg p-6 space-y-2'>
-                    <h3 className='font-bold text-4xl mb-8'> {spot.name}</h3>
+                    <h3 className='font-bold text-4xl mb-8 flex'><IoLocationOutline /> {spot.name}</h3>
                     <h4><span className='font-bold'>Country :</span> {spot.CName}</h4>
                     <h4><span className='font-bold'>Cost :</span> {spot.cost}$</h4>
                     <h4><span className='font-bold'>Visitor :</span> {spot.visitor}</h4>
