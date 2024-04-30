@@ -60,7 +60,7 @@ const Update = () => {
     return (
         <div>
             <div className='h-[250px] mt-3 flex items-center justify-center bg-[#2d0057CC]'>
-                <h3 className="text-4xl font-bold text-white"> Update Your Spot</h3>
+                <h3 className="text-2xl md:text-4xl font-bold text-white"> Update Your Spot</h3>
 
             </div>
             <div>
@@ -126,7 +126,7 @@ const Update = () => {
                     </div>
 
                     <div>
-                        <input className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white w-full ' type="submit" value="Add" />
+                        <input className='btn border border-[#0000ff] text-[#0000ff] hover:bg-[#0000ff] hover:text-white w-full ' type="submit" value="Update" />
                     </div>
                 </form>
 

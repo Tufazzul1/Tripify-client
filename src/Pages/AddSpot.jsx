@@ -23,7 +23,7 @@ const AddSpot = () => {
         const UserName = user.displayName;
         const email = user.email
 
-        const spot = { name, CName, location,time,  photo, cost, seasonality, visitor, description, email, UserName }
+        const spot = { name, CName, location, time, photo, cost, seasonality, visitor, description, email, UserName }
         // console.log(spot)
 
 
@@ -42,8 +42,8 @@ const AddSpot = () => {
                         text: 'Spot added successfuly',
                         icon: 'success',
                         confirmButtonText: 'Ok'
-                      })
-                      form.reset()
+                    })
+                    form.reset()
                 }
             })
     }
@@ -63,7 +63,7 @@ const AddSpot = () => {
                     <label className="form-control w-full">
                         <span className="label-text">Country Name</span>
                         <select className="input h-[40px] input-bordered w-full" name="CName">
-                            <option value="">--Select country--</option> 
+                            <option value="">--Select country--</option>
                             <option value="bangladesh">Bangladesh</option>
                             <option value="thiland">Thailand</option>
                             <option value="indonesia">Indonesia</option>
