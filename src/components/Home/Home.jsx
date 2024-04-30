@@ -6,29 +6,40 @@ import TouristSpot from '../../Pages/TouristSpot';
 import { IoLocationOutline } from 'react-icons/io5';
 import { SlCalender } from "react-icons/sl";
 import { LiaComments } from 'react-icons/lia';
+import Countrys from '../Countrys';
 
 const Home = () => {
 
     const spots = useLoaderData();
     const [populerData, setPopulerData] = useState([]);
-    const [blogs, setBlogs] = useState([])
+    const [blogs, setBlogs] = useState([]);
+    const [countrys, setCountrys] = useState([]);
+
     // console.log(spots)
     useEffect(() => {
         fetch('https://tripify-server-five.vercel.app/populer')
             .then(res => res.json())
             .then(data => {
                 setPopulerData(data)
-                console.log(data)
+                // console.log(data)
             })
-    }, [])
+    }, []);
     useEffect(() => {
         fetch('https://tripify-server-five.vercel.app/blogs')
             .then(res => res.json())
             .then(data => {
                 setBlogs(data)
-                console.log(data)
+                // console.log(data)
             })
-    }, [])
+    }, []);
+    useEffect(() => {
+        fetch('http://localhost:5000/countrys')
+            .then(res => res.json())
+            .then(data => {
+                setCountrys(data)
+                // console.log(data)
+            })
+    }, []);
 
 
     return (
@@ -87,6 +98,28 @@ const Home = () => {
                 )}
 
 
+                {/* countrys section */}
+                {countrys.length > 0 && (
+
+                    <div className="mt-20">
+                        <div className="text-center">
+                            <h3 className="text-center font-bold text-4xl mb-3">Countries</h3>
+                            <p>Explore a collection of captivating destinations, each with its own unique charm and character. From bustling cities to tranquil landscapes, <br /> dive into the stories and attractions that make each place special</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 mt-10 gap-5">
+                            {
+                                countrys.map(country =>
+                                    <Countrys
+                                        key={country._id}
+                                        country={country}
+                                    ></Countrys>)
+                            }
+                        </div>
+
+                    </div>
+                )}
+
                 {/* blog section */}
                 {blogs.length > 0 && (
 
@@ -106,7 +139,7 @@ const Home = () => {
                                         <div className="card-body">
                                             <h2 className="card-title">
                                                 {blog.title}
-                                               
+
                                             </h2>
                                             <div className="card-actions flex justify-between">
                                                 <h3 className="flex gap-2"> <LiaComments /> {blog.comments}</h3>
